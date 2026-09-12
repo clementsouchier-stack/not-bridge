@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clementsouchier-stack.github.io/not-bridge/chassol-v2/sitemap.xml
