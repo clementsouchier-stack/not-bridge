@@ -1,1 +1,1107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bridge.audio Open Sessions: submit your music and get discovered live by professional music supervisors.">
+  <meta name="theme-color" content="#D7FF2F">
+  <title>Linecheck × Bridge.audio Open Session</title>
+  <style>
+    :root {
+      --bg: #F3F0E8;
+      --paper: #FBFAF6;
+      --ink: #111111;
+      --accent: #D7FF2F;
+      --muted: #67635B;
+      --soft: rgba(17,17,17,.11);
+      --line: rgba(17,17,17,.26);
+      --max: 1500px;
+      --pad: clamp(18px, 3.2vw, 52px);
+      --display: "Arial Narrow", "Aptos Narrow", "Helvetica Neue", Arial, sans-serif;
+      --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      overflow-x: hidden;
+    }
+    body::selection { background: var(--accent); color: var(--ink); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .wrap { width: min(100%, var(--max)); margin: 0 auto; padding-inline: var(--pad); }
+    .eyebrow {
+      font-family: var(--display);
+      font-size: 11px;
+      font-stretch: condensed;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .display {
+      margin: 0;
+      font-family: var(--display);
+      font-stretch: condensed;
+      font-size: clamp(76px, 11.6vw, 190px);
+      font-weight: 950;
+      letter-spacing: -.075em;
+      line-height: .72;
+      text-transform: uppercase;
+    }
+    .h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-stretch: condensed;
+      font-size: clamp(44px, 6.3vw, 98px);
+      font-weight: 950;
+      letter-spacing: -.062em;
+      line-height: .85;
+      text-transform: uppercase;
+    }
+    .h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-stretch: condensed;
+      font-size: clamp(30px, 3.4vw, 54px);
+      font-weight: 900;
+      letter-spacing: -.045em;
+      line-height: .92;
+      text-transform: uppercase;
+    }
+    .lede {
+      font-size: clamp(24px, 2.4vw, 40px);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+    }
+    .body { font-size: 16px; line-height: 1.48; }
+    .muted { color: var(--muted); }
+    .rule { border-top: 1px solid var(--ink); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+      min-height: 56px;
+      padding: 0 18px;
+      border: 1px solid var(--ink);
+      background: var(--accent);
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .03em;
+      box-shadow: 6px 6px 0 var(--ink);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--ink); }
+    .btn.dark { background: var(--ink); color: var(--bg); box-shadow: none; }
+    .btn.dark:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(17,17,17,.22); }
+    .btn.ghost { background: transparent; box-shadow: none; color: inherit; }
+    .arrow { font-size: 18px; }
+
+    /* Header */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(243,240,232,.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--ink);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 36px;
+      align-items: center;
+    }
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      white-space: nowrap;
+    }
+    .logo-lockup .x { font-weight: 900; font-size: 17px; }
+    .logo-linecheck { width: 96px; height: auto; }
+    .logo-bridge { width: 150px; height: auto; }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .nav-status { display: none; }
+
+    /* Hero */
+    .hero { border-bottom: 1px solid var(--ink); }
+    .hero-grid {
+      min-height: calc(100svh - 72px);
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+    }
+    .hero-copy {
+      padding: clamp(52px, 7vw, 108px) var(--pad) 46px;
+      border-right: 1px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+    .hero-copy .display { max-width: 780px; }
+    .hero-promise {
+      margin: 30px 0 0;
+      font-family: var(--display);
+      font-stretch: condensed;
+      font-size: clamp(30px, 3.55vw, 58px);
+      font-weight: 900;
+      letter-spacing: -.055em;
+      line-height: .92;
+    }
+    .hero-promise .highlight {
+      display: inline;
+      background: linear-gradient(transparent 62%, var(--accent) 62%);
+    }
+    .mobile-mechanic { display: none; }
+    .hero-bottom {
+      margin-top: 44px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-meta {
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.36;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .hero-meta .light { color: var(--muted); }
+
+    .hero-graphic {
+      position: relative;
+      overflow: hidden;
+      min-height: 640px;
+      padding: clamp(28px, 4vw, 64px);
+      background:
+        linear-gradient(rgba(17,17,17,.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,.075) 1px, transparent 1px),
+        var(--accent);
+      background-size: 38px 38px;
+    }
+    .orbit {
+      position: absolute;
+      inset: 14% 11% 13% 11%;
+      border: 2px solid var(--ink);
+      border-radius: 51% 49% 44% 56% / 42% 56% 44% 58%;
+      transform: rotate(-5deg);
+    }
+    .orbit.second {
+      inset: 22% 7% 20% 17%;
+      border-width: 1.5px;
+      border-style: dashed;
+      transform: rotate(10deg);
+    }
+    .route-copy {
+      position: absolute;
+      width: 46%;
+      right: 10%;
+      top: 17%;
+      z-index: 2;
+      font-family: var(--display);
+      font-size: clamp(42px, 5vw, 82px);
+      font-stretch: condensed;
+      font-weight: 950;
+      letter-spacing: -.062em;
+      line-height: .82;
+      text-transform: uppercase;
+      transform: rotate(3deg);
+    }
+    .node {
+      position: absolute;
+      z-index: 3;
+      width: clamp(88px, 9vw, 126px);
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      background: var(--bg);
+      border: 1px solid var(--ink);
+      box-shadow: 7px 7px 0 var(--ink);
+      text-align: center;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .node strong { display: block; margin-bottom: 4px; font-size: 32px; line-height: .8; letter-spacing: -.03em; }
+    .node-1 { left: 17%; top: 18%; }
+    .node-2 { right: 9%; top: 43%; }
+    .node-3 { left: 27%; bottom: 13%; }
+    .graphic-foot {
+      position: absolute;
+      right: clamp(20px, 4vw, 54px);
+      bottom: 28px;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    /* Mechanic */
+    .mechanic-strip {
+      border-bottom: 1px solid var(--ink);
+      background: var(--bg);
+    }
+    .mechanic-kicker {
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--ink);
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .mechanic-kicker .line { flex: 1; height: 1px; background: var(--ink); opacity: .45; }
+    .mechanic-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .mechanic-card {
+      min-height: 220px;
+      padding: 34px 32px;
+      border-right: 1px solid var(--ink);
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .mechanic-card:last-child { border-right: 0; }
+    .mechanic-num {
+      width: 48px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      font-family: var(--display);
+      font-size: 25px;
+      font-weight: 950;
+      letter-spacing: -.03em;
+    }
+    .mechanic-card h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(27px, 2.5vw, 40px);
+      font-weight: 950;
+      letter-spacing: -.045em;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .mechanic-card p { margin: 22px 0 0; max-width: 360px; font-size: 14px; line-height: 1.45; }
+
+    /* Generic sections */
+    section { border-bottom: 1px solid var(--ink); }
+    .section-pad { padding-block: clamp(78px, 9vw, 136px); }
+    .section-head {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: clamp(28px, 6vw, 96px);
+      align-items: start;
+    }
+    .section-head .copy { max-width: 910px; }
+    .section-head .copy p { margin: 28px 0 0; }
+
+    /* Live image section */
+    .live-section { background: #101010; color: #F7F4EB; }
+    .live-grid {
+      display: grid;
+      grid-template-columns: .52fr 1.48fr;
+      min-height: 720px;
+    }
+    .live-copy {
+      padding: clamp(50px, 6vw, 90px) var(--pad);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(247,244,235,.35);
+    }
+    .live-copy .h2 { max-width: 500px; }
+    .live-copy p { max-width: 420px; margin: 28px 0 0; color: rgba(247,244,235,.78); }
+    .visual-note {
+      margin-top: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 800;
+    }
+    .visual-note::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(215,255,47,.14);
+    }
+    .live-photo {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+    }
+    .live-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .live-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(16,16,16,.18), transparent 34%);
+      pointer-events: none;
+    }
+    .live-badge {
+      position: absolute;
+      left: 24px;
+      bottom: 22px;
+      z-index: 2;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 9px 12px;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* What happens */
+    .process-grid {
+      margin-top: 58px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      box-shadow: 10px 10px 0 var(--ink);
+    }
+    .process-brief {
+      padding: clamp(26px, 4vw, 54px);
+      background: var(--accent);
+      border-right: 1px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 480px;
+    }
+    .process-brief blockquote {
+      margin: 40px 0;
+      font-family: var(--display);
+      font-size: clamp(34px, 4.2vw, 64px);
+      font-weight: 950;
+      letter-spacing: -.052em;
+      line-height: .92;
+    }
+    .process-search { padding: clamp(26px, 4vw, 54px); }
+    .search-field {
+      margin-top: 18px;
+      border: 1px solid var(--ink);
+      background: #fff;
+      padding: 17px 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 13px;
+    }
+    .results { margin-top: 14px; display: grid; gap: 10px; }
+    .result {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      min-height: 72px;
+      padding: 12px;
+      border: 1px solid var(--ink);
+      background: #fff;
+    }
+    .play {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+    }
+    .wave {
+      height: 14px;
+      max-width: 300px;
+      margin-top: 7px;
+      opacity: .75;
+      background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 7px);
+      clip-path: polygon(0 44%,4% 30%,8% 70%,12% 18%,16% 82%,20% 35%,24% 60%,28% 8%,32% 85%,36% 28%,40% 66%,44% 16%,48% 74%,52% 35%,56% 58%,60% 10%,64% 86%,68% 24%,72% 69%,76% 34%,80% 76%,84% 18%,88% 62%,92% 31%,96% 74%,100% 45%,100% 100%,0 100%);
+    }
+    .chip { border: 1px solid var(--ink); background: var(--accent); padding: 6px 8px; font-size: 10px; font-weight: 900; }
+    .flow-row {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .flow-item {
+      min-height: 150px;
+      padding: 20px;
+      border-right: 1px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .flow-item:last-child { border-right: 0; }
+    .flow-item span { font-size: 11px; font-weight: 900; }
+    .flow-item strong { font-family: var(--display); font-size: 26px; line-height: .9; text-transform: uppercase; }
+
+    /* Supervisors */
+    .supervisors { background: var(--paper); }
+    .supervisor-top {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .supervisor-note { max-width: 420px; justify-self: end; }
+    .supervisor-list {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border-top: 1px solid var(--ink);
+    }
+    .supervisor-card {
+      border-right: 1px solid var(--ink);
+      padding: 18px 18px 26px 0;
+      min-width: 0;
+    }
+    .supervisor-card + .supervisor-card { padding-left: 18px; }
+    .supervisor-card img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.04);
+      border: 1px solid rgba(17,17,17,.14);
+    }
+    .supervisor-card .name {
+      margin-top: 15px;
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .supervisor-card .role { margin-top: 3px; font-size: 12px; }
+    .supervisor-card .focus { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+    .supervisor-more {
+      padding: 18px;
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      text-align: center;
+      border-right: 0;
+      background: rgba(17,17,17,.025);
+    }
+    .supervisor-more .plus { font-size: 38px; font-weight: 300; }
+    .supervisor-more p { margin: 12px 0 0; font-family: var(--display); font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .placeholder-flag {
+      margin-top: 24px;
+      display: inline-block;
+      border: 1px solid var(--ink);
+      padding: 7px 9px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 800;
+    }
+
+    /* Briefs */
+    .briefs-grid {
+      margin-top: 58px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .brief-card {
+      min-height: 360px;
+      padding: 24px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      box-shadow: 7px 7px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+      transform: rotate(var(--rot, 0deg));
+    }
+    .brief-card:nth-child(1) { --rot: -1deg; }
+    .brief-card:nth-child(2) { --rot: .7deg; margin-top: 24px; }
+    .brief-card:nth-child(3) { --rot: -.35deg; }
+    .brief-card h3 { margin: 48px 0 0; }
+    .tags { margin-top: auto; display: flex; gap: 7px; flex-wrap: wrap; }
+    .tag { padding: 7px 9px; border: 1px solid var(--ink); font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    .brief-disclaimer { margin-top: 34px; max-width: 760px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    /* Benefits */
+    .benefit-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--ink);
+    }
+    .benefit {
+      min-height: 340px;
+      padding: 28px;
+      border-right: 1px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .benefit:nth-child(2) { background: var(--accent); }
+    .benefit:last-child { border-right: 0; }
+    .benefit .icon { font-family: var(--display); font-size: 52px; font-weight: 900; }
+    .benefit p { max-width: 380px; margin: 18px 0 0; }
+
+    /* Who */
+    .who-list { margin-top: 48px; border-top: 1px solid var(--ink); }
+    .who-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--ink);
+      font-family: var(--display);
+      font-size: clamp(28px, 4vw, 60px);
+      font-weight: 950;
+      letter-spacing: -.05em;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .who-item small { font-size: 10px; letter-spacing: .1em; }
+    .who-item .plus { font-family: var(--body); font-size: 24px; font-weight: 300; }
+
+    /* Submission */
+    .submit-band { background: var(--accent); }
+    .submit-shell {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 64px;
+      align-items: end;
+      padding: clamp(48px, 6vw, 88px) 0;
+    }
+    .submit-shell .h2 { max-width: 900px; }
+    .submit-right p { margin: 0 0 28px; font-size: 17px; line-height: 1.45; }
+    .submit-facts {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .submit-facts span { border: 1px solid var(--ink); padding: 7px 9px; background: rgba(243,240,232,.58); }
+
+    /* Event + FAQ */
+    .info-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: clamp(48px, 7vw, 110px);
+    }
+    .event-table { margin-top: 30px; border-top: 1px solid var(--ink); }
+    .event-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 22px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--ink);
+    }
+    .event-row dt { font-family: var(--display); font-size: 11px; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .event-row dd { margin: 0; font-size: 15px; }
+    .faq { margin-top: 30px; border-top: 1px solid var(--ink); }
+    details { border-bottom: 1px solid var(--ink); }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 42px 18px 0;
+      position: relative;
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 0; top: 14px; font-size: 25px; font-weight: 300; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 0 0 20px; max-width: 740px; color: var(--muted); font-size: 14px; line-height: 1.52; }
+
+    /* Footer */
+    footer { background: var(--bg); }
+    .footer-cta {
+      padding: clamp(62px, 8vw, 118px) 0;
+      border-bottom: 1px solid var(--ink);
+    }
+    .footer-cta .inner {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 64px;
+      align-items: end;
+    }
+    .footer-cta p { margin: 0 0 28px; font-size: 17px; line-height: 1.45; }
+    .footer-bottom {
+      min-height: 94px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 26px;
+      align-items: center;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer-bottom .logo-lockup { transform-origin: left center; }
+    .footer-bottom .logo-linecheck { width: 74px; }
+    .footer-bottom .logo-bridge { width: 122px; }
+    .footer-bottom .right { text-align: right; }
+
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .nav-status { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+      .hero-copy { border-right: 0; border-bottom: 1px solid var(--ink); min-height: 650px; }
+      .hero-graphic { min-height: 640px; }
+      .live-grid { grid-template-columns: 1fr; }
+      .live-copy { border-right: 0; border-bottom: 1px solid rgba(247,244,235,.35); }
+      .live-photo { min-height: 560px; }
+      .supervisor-list { grid-template-columns: repeat(3, 1fr); }
+      .supervisor-card:nth-child(3n) { border-right: 0; }
+      .supervisor-card:nth-child(n+4) { border-top: 1px solid var(--ink); }
+      .supervisor-more { border-top: 1px solid var(--ink); }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-brief { border-right: 0; border-bottom: 1px solid var(--ink); min-height: 380px; }
+      .section-head, .submit-shell, .info-grid, .footer-cta .inner { grid-template-columns: 1fr; }
+      .supervisor-top { grid-template-columns: 1fr; }
+      .supervisor-note { justify-self: start; }
+    }
+
+    @media (max-width: 760px) {
+      :root { --pad: 18px; }
+      .site-nav { position: relative; }
+      .nav-inner { min-height: 66px; grid-template-columns: 1fr auto; gap: 14px; }
+      .logo-lockup { gap: 10px; }
+      .logo-linecheck { width: 78px; }
+      .logo-bridge { width: 116px; }
+      .nav-inner > .btn { display: none; }
+      .nav-status { text-align: right; font-size: 8px; max-width: 140px; }
+      .hero-copy { min-height: auto; padding-top: 44px; }
+      .display { font-size: clamp(70px, 23vw, 118px); }
+      .hero-promise { font-size: clamp(30px, 10vw, 46px); }
+      .mobile-mechanic {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 26px;
+        font-family: var(--display);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+      }
+      .mobile-mechanic span {
+        border: 1px solid var(--ink);
+        padding: 7px 8px;
+        background: var(--paper);
+      }
+      .hero-bottom { align-items: stretch; flex-direction: column; }
+      .hero-bottom .btn { width: 100%; }
+      .hero-meta { order: -1; }
+      .hero-graphic { min-height: 500px; padding: 18px; }
+      .route-copy { width: 52%; right: 6%; top: 18%; font-size: clamp(36px, 11vw, 54px); }
+      .node { width: 86px; }
+      .node strong { font-size: 26px; }
+      .node-1 { left: 8%; top: 18%; }
+      .node-2 { right: 4%; top: 53%; }
+      .node-3 { left: 22%; bottom: 8%; }
+      .mechanic-kicker { padding-block: 12px; align-items: flex-start; flex-direction: column; }
+      .mechanic-kicker .line { width: 100%; }
+      .mechanic-grid { grid-template-columns: 1fr; }
+      .mechanic-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--ink); padding: 22px 0; }
+      .mechanic-card:last-child { border-bottom: 0; }
+      .section-pad { padding-block: 70px; }
+      .live-copy { padding: 52px var(--pad); }
+      .live-photo { min-height: 380px; }
+      .live-photo img { object-position: center; }
+      .process-brief { min-height: 320px; }
+      .search-field { flex-direction: column; }
+      .result { grid-template-columns: 38px 1fr; }
+      .result .chip { grid-column: 2; justify-self: start; }
+      .flow-row { grid-template-columns: 1fr 1fr; }
+      .flow-item:nth-child(2) { border-right: 0; }
+      .flow-item:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+      .supervisor-list { grid-template-columns: 1fr 1fr; }
+      .supervisor-card, .supervisor-card:nth-child(3n) { border-right: 1px solid var(--ink); }
+      .supervisor-card:nth-child(2n) { border-right: 0; }
+      .supervisor-card:nth-child(n+3) { border-top: 1px solid var(--ink); }
+      .supervisor-more { border-top: 1px solid var(--ink); }
+      .briefs-grid, .benefit-grid { grid-template-columns: 1fr; }
+      .brief-card:nth-child(2) { margin-top: 0; }
+      .benefit { border-right: 0; border-bottom: 1px solid var(--ink); min-height: 280px; }
+      .benefit:last-child { border-bottom: 0; }
+      .who-item { grid-template-columns: 42px 1fr auto; }
+      .submit-shell { gap: 36px; }
+      .footer-bottom { grid-template-columns: 1fr; padding-block: 24px; }
+      .footer-bottom .right { text-align: left; }
+      .footer-cta .inner { gap: 34px; }
+      .event-row { grid-template-columns: 100px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="wrap nav-inner">
+      <a href="#top" class="logo-lockup" aria-label="Linecheck and Bridge.audio Open Session">
+        <img class="logo-linecheck" src="assets/linecheck-logo.png" data-linecheck-logo alt="Linecheck">
+        <span class="x">×</span>
+        <img class="logo-bridge" src="assets/bridge-logo.png" data-bridge-logo alt="Bridge.audio">
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#supervisors">Supervisors</a>
+        <a href="#briefs">Briefs</a>
+        <a href="#info">Info</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-status" data-submission-status>Submission link to be connected</div>
+      <a class="btn" data-submission-link href="#submit">Submit your music <span class="arrow">↗</span></a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Live music discovery session</div>
+            <h1 class="display" style="margin-top:10px">Open<br>Session</h1>
+            <div class="hero-promise"><span class="highlight">Submit your music.</span><br>Get discovered by music supervisors.</div>
+            <div class="mobile-mechanic" aria-label="Open Session in three steps"><span>01 Submit</span><span>02 Live search</span><span>03 Opportunities</span></div>
+          </div>
+          <div class="hero-bottom">
+            <a class="btn" data-submission-link href="#submit">Submit your music <span class="arrow">↗</span></a>
+            <div class="hero-meta">
+              <div><span data-event-dates>18–21 NOV 2026</span> · <span data-event-venue>BASE Milano</span></div>
+              <div><span data-event-city>Milan</span> · <span data-open-session-date>Open Session date TBA</span></div>
+              <div class="light">Submissions close <span data-deadline>Deadline TBA</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-graphic" aria-label="Submit, live search, opportunities">
+          <div class="orbit"></div>
+          <div class="orbit second"></div>
+          <div class="route-copy">Your<br>tracks.<br>Their<br>briefs<br>live.</div>
+          <div class="node node-1"><div><strong>01</strong>Submit</div></div>
+          <div class="node node-2"><div><strong>02</strong>Live search</div></div>
+          <div class="node node-3"><div><strong>03</strong>Opportunities</div></div>
+          <div class="graphic-foot">Music<br>People<br>Opportunities<br>Real connections</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="mechanic-strip" id="about">
+      <div class="wrap mechanic-kicker">
+        <span>Real briefs. Real people. Real opportunities.</span>
+        <span class="line"></span>
+        <span>1 Submit → 2 Live discovery → 3 Opportunities</span>
+      </div>
+      <div class="wrap mechanic-grid">
+        <article class="mechanic-card">
+          <div class="mechanic-num">01</div>
+          <div><h3>Submit<br>your music</h3><p>Send the tracks you want professional music supervisors to discover. Your music joins the dedicated Open Session pool.</p></div>
+        </article>
+        <article class="mechanic-card">
+          <div class="mechanic-num">02</div>
+          <div><h3>Live search<br>by supervisors</h3><p>On event day, supervisors reveal their briefs, search the submitted catalog live, listen and explain what catches their attention.</p></div>
+        </article>
+        <article class="mechanic-card">
+          <div class="mechanic-num">03</div>
+          <div><h3>Create real<br>opportunities</h3><p>Gain visibility, professional feedback and the possibility of a genuine conversation when a track fits a real need.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="live-section" aria-labelledby="live-title">
+      <div class="live-grid">
+        <div class="live-copy">
+          <div class="eyebrow">The experience</div>
+          <h2 class="h2" id="live-title" style="margin-top:18px">See the session live.</h2>
+          <p class="body">A room, a real brief, a live search and an audience watching the discovery happen. No pre-selected playlist. No scripted winners.</p>
+          <div class="visual-note" data-live-label>Illustrative event visual</div>
+        </div>
+        <div class="live-photo">
+          <img src="assets/open-session-live-illustration.png" data-live-image alt="Illustrative visualisation of a future Open Session event with fictional panelists and audience.">
+          <div class="live-badge">Future event visualisation · fictional participants</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" aria-labelledby="day-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What happens on the day?</div>
+          <div class="copy">
+            <h2 class="h2" id="day-title">No playlist is prepared in advance.</h2>
+            <p class="lede">The supervisors arrive with their briefs. The submitted tracks are already in the dedicated Bridge.audio environment. Then the search begins.</p>
+          </div>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-brief">
+            <div class="eyebrow">Live brief / Illustrative example</div>
+            <blockquote>“Energetic electronic music for a global sports campaign.”</blockquote>
+            <div class="eyebrow">Actual briefs may stay secret until the session.</div>
+          </div>
+          <div class="process-search">
+            <div class="eyebrow">Bridge.audio / Live discovery</div>
+            <div class="search-field"><span>Energetic electronic · bold · euphoric · instrumental</span><strong>SEARCH ↵</strong></div>
+            <div class="results">
+              <div class="result"><div class="play">▶</div><div><strong>Track result 01</strong><div class="wave"></div></div><div class="chip">Result</div></div>
+              <div class="result"><div class="play">▶</div><div><strong>Track result 02</strong><div class="wave"></div></div><div class="chip">Result</div></div>
+              <div class="result"><div class="play">▶</div><div><strong>Track result 03</strong><div class="wave"></div></div><div class="chip">Result</div></div>
+              <div class="result"><div class="play">▶</div><div><strong>Your track could appear here</strong><div class="wave"></div></div><div class="chip">?</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-row" aria-label="Open Session live flow">
+          <div class="flow-item"><span>01</span><strong>Real<br>brief</strong></div>
+          <div class="flow-item"><span>02</span><strong>Live<br>search</strong></div>
+          <div class="flow-item"><span>03</span><strong>Music<br>results</strong></div>
+          <div class="flow-item"><span>04</span><strong>Supervisor<br>reaction</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="supervisors section-pad" id="supervisors" aria-labelledby="sup-title">
+      <div class="wrap">
+        <div class="supervisor-top">
+          <div>
+            <div class="eyebrow">Meet the music supervisors</div>
+            <h2 class="h2" id="sup-title" style="margin-top:18px">They bring the briefs.</h2>
+          </div>
+          <div class="supervisor-note">
+            <p class="body">Confirmed Linecheck Open Session supervisors will appear here once approved for publication.</p>
+            <span class="placeholder-flag">Illustrative portraits · lineup TBA</span>
+          </div>
+        </div>
+        <div class="supervisor-list" id="supervisor-list"></div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="briefs" aria-labelledby="briefs-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The briefs</div>
+          <div class="copy">
+            <h2 class="h2" id="briefs-title">What will they be looking for?</h2>
+            <p class="lede"><strong>You’ll find out on the day.</strong> This is not about finding the “best song”. It is about finding the right song for the right brief.</p>
+          </div>
+        </div>
+        <div class="briefs-grid" id="briefs-grid"></div>
+        <p class="brief-disclaimer">The cards above are illustrative examples only. Actual briefs may remain confidential until the live session.</p>
+      </div>
+    </section>
+
+    <section class="section-pad" aria-labelledby="benefits-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What can you get?</div>
+          <div class="copy"><h2 class="h2" id="benefits-title">Three reasons to put your music in the search.</h2></div>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit"><div class="icon">◎</div><div><h3 class="h3">Visibility</h3><p class="body">Put your music in front of professional music supervisors actively searching for tracks.</p></div></article>
+          <article class="benefit"><div class="icon">↗</div><div><h3 class="h3">Sync potential</h3><p class="body">If a track genuinely fits a supervisor’s need, the discovery can become the start of a professional conversation or potential sync opportunity.</p></div></article>
+          <article class="benefit"><div class="icon">✦</div><div><h3 class="h3">Prizes</h3><p class="body" id="prize-copy">Bridge.audio subscriptions and event-specific prizes can be configured for each Open Session.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" aria-labelledby="who-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Who can submit?</div>
+          <div class="copy"><h2 class="h2" id="who-title">Your music belongs in the search.</h2><p class="lede">Open Sessions are built for the people who create, represent and control music rights.</p></div>
+        </div>
+        <div class="who-list" id="who-list"></div>
+        <p class="brief-disclaimer">Participants should control or represent the relevant recording and/or composition rights and provide accurate rights information. Final eligibility rules remain event-specific.</p>
+      </div>
+    </section>
+
+    <section class="submit-band" id="submit" aria-labelledby="submit-title">
+      <div class="wrap submit-shell">
+        <div>
+          <div class="eyebrow">Your music belongs in more places</div>
+          <h2 class="h2" id="submit-title" style="margin-top:16px">Submit now.<br>Be part of Open Session.</h2>
+        </div>
+        <div class="submit-right">
+          <p>Submit your tracks before <strong data-deadline>Deadline TBA</strong> and they will become eligible for discovery during the <strong data-event-name>Linecheck 2026</strong> Open Session.</p>
+          <a class="btn dark" data-submission-link href="#submit">Submit your music <span class="arrow">↗</span></a>
+          <div class="submit-facts">
+            <span data-submission-cost>Submission terms TBA</span>
+            <span>Deadline: <b data-deadline>Deadline TBA</b></span>
+            <span>Max tracks: <b data-max-tracks>TBA</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="info">
+      <div class="wrap info-grid">
+        <div>
+          <div class="eyebrow">Event information</div>
+          <h2 class="h3" style="margin-top:18px">Open Session<br><span data-event-name>Linecheck 2026</span></h2>
+          <dl class="event-table">
+            <div class="event-row"><dt>Where</dt><dd><span data-event-venue>BASE Milano</span><br><span data-event-city>Milan</span>, <span data-event-country>Italy</span></dd></div>
+            <div class="event-row"><dt>Linecheck</dt><dd data-event-dates>18–21 NOV 2026</dd></div>
+            <div class="event-row"><dt>Session</dt><dd data-open-session-date>Open Session date TBA</dd></div>
+            <div class="event-row"><dt>Time</dt><dd data-event-time>Time TBA</dd></div>
+            <div class="event-row"><dt>Submit by</dt><dd data-deadline>Deadline TBA</dd></div>
+            <div class="event-row"><dt>Access</dt><dd>Access information TBA</dd></div>
+          </dl>
+        </div>
+        <div id="faq">
+          <div class="eyebrow">FAQ</div>
+          <div class="faq">
+            <details><summary>Is it free to submit?</summary><p data-submission-cost>Submission terms TBA</p></details>
+            <details><summary>Who can submit music?</summary><p>Artists, labels, publishers and other rights holders, subject to the event’s eligibility rules.</p></details>
+            <details><summary>How many tracks can I submit?</summary><p>Maximum <span data-max-tracks>TBA</span> tracks per participant. This limit is configurable by event.</p></details>
+            <details><summary>Will every submitted track be played?</summary><p>No. Music supervisors search the submitted catalog according to their briefs. Only tracks appearing in relevant searches may be listened to during the session.</p></details>
+            <details><summary>Does being selected guarantee a sync?</summary><p>No. The Open Session creates genuine discovery and professional exposure, but no synchronization can be guaranteed.</p></details>
+            <details><summary>Do I need a Bridge.audio account?</summary><p>To be confirmed according to the final submission and authentication flow.</p></details>
+            <details><summary>Do I need to attend the event?</summary><p>To be confirmed in the event-specific eligibility rules.</p></details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-cta">
+      <div class="wrap inner">
+        <div>
+          <div class="eyebrow">Final call</div>
+          <h2 class="h2" style="margin-top:16px">Your track could be the one they’re looking for.</h2>
+        </div>
+        <div>
+          <p>Submit your music before <strong data-deadline>Deadline TBA</strong>.</p>
+          <a class="btn" data-submission-link href="#submit">Submit your music <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <div class="logo-lockup">
+        <img class="logo-linecheck" src="assets/linecheck-logo.png" data-linecheck-logo alt="Linecheck">
+        <span class="x">×</span>
+        <img class="logo-bridge" src="assets/bridge-logo.png" data-bridge-logo alt="Bridge.audio">
+      </div>
+      <div><span data-event-dates>18–21 NOV 2026</span> · <span data-event-venue>BASE Milano</span></div>
+      <div class="right">Your tracks. Their briefs. Live.</div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      const cfg = window.OPEN_SESSION_CONFIG || {};
+      const setText = (selector, value) => document.querySelectorAll(selector).forEach(el => el.textContent = value ?? "");
+      const setAttr = (selector, attr, value) => document.querySelectorAll(selector).forEach(el => { if (value) el.setAttribute(attr, value); });
+
+      document.documentElement.style.setProperty("--accent", cfg.accentColor || "#D7FF2F");
+      document.documentElement.style.setProperty("--bg", cfg.backgroundColor || "#F3F0E8");
+      document.documentElement.style.setProperty("--ink", cfg.textColor || "#111111");
+
+      setText("[data-event-name]", cfg.eventName);
+      setText("[data-event-city]", cfg.eventCity);
+      setText("[data-event-country]", cfg.eventCountry);
+      setText("[data-event-venue]", cfg.venue);
+      setText("[data-event-dates]", cfg.eventDates);
+      setText("[data-open-session-date]", cfg.openSessionDate);
+      setText("[data-event-time]", cfg.eventTime);
+      setText("[data-deadline]", cfg.submissionDeadline);
+      setText("[data-submission-status]", cfg.submissionStatus);
+      setText("[data-submission-cost]", cfg.submissionCost);
+      setText("[data-max-tracks]", cfg.maxTracks);
+      setAttr("[data-submission-link]", "href", cfg.submissionUrl || "#submit");
+      setAttr("[data-linecheck-logo]", "src", cfg.logos?.linecheck);
+      setAttr("[data-bridge-logo]", "src", cfg.logos?.bridge);
+      setAttr("[data-live-image]", "src", cfg.liveVisual?.image);
+      setAttr("[data-live-image]", "alt", cfg.liveVisual?.alt);
+      setText("[data-live-label]", cfg.liveVisual?.label || "Illustrative event visual");
+
+      const supervisorList = document.getElementById("supervisor-list");
+      supervisorList.innerHTML = "";
+      (cfg.supervisors || []).forEach((s) => {
+        const card = document.createElement("article");
+        card.className = "supervisor-card";
+        card.innerHTML = `<img src="${s.image}" alt="Illustrative placeholder portrait for a future Open Session music supervisor"><div class="name">${s.name}</div><div class="role">${s.role}</div><div class="focus">${s.focus}</div>`;
+        supervisorList.appendChild(card);
+      });
+      const more = document.createElement("article");
+      more.className = "supervisor-more";
+      more.innerHTML = `<div><div class="plus">＋</div><p>Confirmed lineup<br>to be announced</p></div>`;
+      supervisorList.appendChild(more);
+
+      const briefsGrid = document.getElementById("briefs-grid");
+      briefsGrid.innerHTML = "";
+      (cfg.exampleBriefs || []).forEach((b) => {
+        const card = document.createElement("article");
+        card.className = "brief-card";
+        const tags = (b.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+        card.innerHTML = `<div class="eyebrow">${b.kicker}</div><h3 class="h3">${b.title}</h3><div class="tags">${tags}</div>`;
+        briefsGrid.appendChild(card);
+      });
+
+      const whoList = document.getElementById("who-list");
+      whoList.innerHTML = "";
+      (cfg.eligibility || []).forEach((label, i) => {
+        const row = document.createElement("div");
+        row.className = "who-item";
+        row.innerHTML = `<small>${String(i + 1).padStart(2, "0")}</small><span>${label}</span><span class="plus">+</span>`;
+        whoList.appendChild(row);
+      });
+
+      if (cfg.prizes?.length) {
+        document.getElementById("prize-copy").textContent = cfg.prizes.join(" · ");
+      }
+    })();
+  </script>
+</body>
+</html>
