@@ -9,8 +9,16 @@ window.OPEN_SESSION_CONFIG = {
   submissionDeadline: "Deadline TBA",
   submissionStatus: "Submission link to be connected",
   submissionCost: "Submission terms TBA",
-  maxTracks: "TBA",
+  maxTracks: "10",
   submissionUrl: "#submit",
+
+  // Submission guidance
+  syncGuideUrl: "https://gamma.app/docs/What-Does-Sync-Friendly-Mean-b8uhcwngj1x6bap",
+
+  // Prize headline only. Detailed allocation can be added later.
+  prizeTotal: "€2,000",
+  prizeWinners: "10 winners",
+  prizeCopy: "A total of €2,000 worth of Bridge.audio plans will be awarded to 10 winners. Full prize breakdown to come.",
 
   accentColor: "#D7FF2F",
   backgroundColor: "#F3F0E8",
@@ -54,9 +62,9 @@ window.OPEN_SESSION_CONFIG = {
   ],
 
   prizes: [
-    "Bridge.audio subscriptions",
-    "Partner prizes TBA",
-    "Additional prizes TBA"
+    "€2,000 worth of Bridge.audio plans",
+    "10 winners",
+    "Full prize breakdown to come"
   ],
 
   eligibility: [

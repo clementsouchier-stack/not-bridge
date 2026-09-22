@@ -1,22 +1,39 @@
-# Bridge.audio Open Sessions - Linecheck 2026 landing page v2
+# Bridge.audio Open Sessions × Linecheck 2026 - V3
 
-Responsive, dependency-free HTML landing page based on the approved Open Session art direction.
+Optimized reusable landing-page template for Bridge.audio Open Sessions.
 
-## Files
-- `index.html` - full landing page, CSS and rendering logic.
-- `config.js` - event-specific configuration layer.
-- `assets/linecheck-logo.png` - supplied official Linecheck logo asset.
-- `assets/bridge-logo.png` - supplied official Bridge.audio logo asset.
-- `assets/open-session-live-illustration.png` - illustrative future-event visual with fictional participants.
-- `assets/supervisors/` - fictional placeholder portraits for the supervisor section.
+## What changed in V3
 
-## Rebrand another Open Session
-Update `config.js`. The structure and responsive behavior can stay unchanged for a standard event rebrand.
+- Keeps the approved editorial Linecheck × Bridge.audio art direction.
+- Adds a clear **What should I submit?** section directly after the 3-step mechanic.
+- Sets the public submission limit to **up to 10 tracks**, while explicitly saying participants do not need to fill all 10 slots.
+- Frames the selection as **strongest sync candidates + a few wild cards**.
+- Adds a concise on-page explanation of what **sync-friendly** means, based on the existing Bridge Gamma guide.
+- Links to the full Gamma guide for users who want to go deeper.
+- Adds the principle: **sync-friendly is a clue, not a rule**, and encourages instinct and unexpected tracks.
+- Strengthens the purpose of Open Session: **Less panel. More action.** It is positioned as a playful, concrete way to refresh the meeting between music supervisors, sync decision-makers and rights holders.
+- Adds the current prize headline: **a total of €2,000 worth of Bridge.audio plans awarded to 10 winners**, with detailed allocation intentionally left for later.
+- Updates the FAQ and submission module accordingly.
 
-Key variables include event name, dates, venue, colors, submission URL, deadline, supervisor lineup, example briefs, prizes and eligibility.
+## Editing future events
 
-## Publication notes
-- The live-event image is explicitly labelled as an illustrative future-event visual. The on-stage participants are fictional.
-- Supervisor portraits are illustrative placeholders. No name or company is claimed before the lineup is approved.
-- The exact Open Session date, time, deadline, submission conditions, track limit and submission URL remain TBA in this version.
-- Submission never guarantees that a track will be played, selected or synchronized.
+The event-specific layer remains in `config.js`:
+
+- event details
+- submission deadline and URL
+- max tracks
+- prize total / winner count
+- sync-friendly guide URL
+- supervisor lineup
+- example briefs
+- eligibility
+- logos and live visual
+- colors
+
+## Important publication notes
+
+- The current supervisor portraits are illustrative placeholders and are labelled as such.
+- The live-event image is explicitly labelled as a future-event visualisation with fictional participants.
+- Actual briefs remain illustrative until confirmed.
+- Submission deadline, exact Open Session date/time, submission terms and detailed prize allocation are still TBA.
+- The €2,000 prize wording means **€2,000 total across 10 winners**, not €2,000 per winner.
