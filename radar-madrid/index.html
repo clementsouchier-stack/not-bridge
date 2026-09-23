@@ -89,7 +89,7 @@ footer{padding:42px 0}.foot{display:flex;align-items:center;gap:30px}.foot img{w
 </div>
 </div></div></div></section>
 
-<section class="syncfriendly"><div class="wrap" style="display:contents">
+<section class="syncfriendly"><div class="wrap syncfriendly-grid">
 <div><div class="eyebrow">Sync-ready?</div><h2><span data-lang="en">What should you send?</span><span data-lang="es">¿Qué deberías enviar?</span></h2><p style="font-size:15px;line-height:1.6"><span data-lang="en">Think less about “my biggest songs” and more about “the tracks a supervisor can understand, clear and use.”</span><span data-lang="es">Piensa menos en “mis canciones más grandes” y más en “los tracks que un supervisor puede entender, licenciar y utilizar”.</span></p></div>
 <div class="checklist">
 <div class="check"><i>✓</i><span data-lang="en">You control, represent or are authorized to submit the relevant rights.</span><span data-lang="es">Controlas, representas o estás autorizado a presentar los derechos relevantes.</span></div>
@@ -184,5 +184,21 @@ section{padding-top:78px;padding-bottom:78px}
   nav{height:90px}
   .logo{width:170px!important;height:66px!important;flex-basis:170px!important}
   .logo img{width:170px!important}
+}
+</style>
+<style>
+/* V7 — layout integrity pass */
+.syncfriendly{display:block!important}
+.syncfriendly-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:75px;align-items:start}
+.cta{max-width:100%;white-space:normal;line-height:1.2}
+.quickbox .cta{box-sizing:border-box;gap:16px}
+.final{
+  padding-left:max(20px,calc((100vw - min(1420px,calc(100vw - 72px)))/2));
+  padding-right:max(20px,calc((100vw - min(1420px,calc(100vw - 72px)))/2));
+}
+@media(max-width:900px){
+  .syncfriendly-grid{grid-template-columns:1fr;gap:42px}
+  .final{padding-left:18px;padding-right:18px}
+  .quickbox .cta{width:100%}
 }
 </style>
