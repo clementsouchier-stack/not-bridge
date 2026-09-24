@@ -7,15 +7,14 @@
   <meta name="description" content="Quatre projets cherchent leur musique. Découvrez les briefs des Film Music Awards 2026 et proposez vos titres via Bridge.audio.">
   <meta name="theme-color" content="#090908">
   <meta property="og:title" content="Film Music Awards 2026 × L’Afrique Fait Son Cinéma">
-  <meta property="og:description" content="Quatre projets. Quatre briefs. Une rencontre entre musique et cinéma.">
+  <meta property="og:description" content="Quatre projets cinématographiques recherchent leur musique. Découvrez les briefs complets et proposez vos titres via Bridge.audio.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Film Music Awards">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://film-sync-awards.bridge.audio/">
+  <link rel="canonical" href="https://clementsouchier-stack.github.io/not-bridge/afsc/">
   <link rel="preconnect" href="https://inbox.bridge.audio">
-  <link rel="preconnect" href="https://share.bridge.audio">
-  <style>
+    <style>
     :root{
       --bg:#090908;
       --panel:#10100e;
@@ -121,7 +120,7 @@
     .project .poster{
       aspect-ratio:.71;overflow:hidden;background:#161512;border:1px solid var(--line);position:relative
     }
-    .project .poster img{width:100%;height:100%;object-fit:cover}
+    .project .poster img{width:100%;height:100%;object-fit:contain}
     .placeholder-badge{
       position:absolute;left:10px;top:10px;background:rgba(9,9,8,.8);border:1px solid var(--line);
       padding:6px 8px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#d9c6a1
@@ -133,6 +132,18 @@
     .project .pitch{margin:10px 0 12px;color:#d2c9b8;font-size:.9rem;line-height:1.45}
     .project-more{display:inline-block;color:var(--gold);font-size:.86rem;font-weight:700;margin-top:2px}
     .project-more:hover{text-decoration:underline}
+    .project-details{margin-top:14px;border-top:1px solid var(--line);padding-top:0}
+    .project-details summary{padding:14px 0;color:var(--gold);font-size:.88rem;font-weight:750}
+    .project-details summary:after{content:"+";color:var(--gold)}
+    .project-details[open] summary:after{content:"−"}
+    .project-detail-body{padding:0 0 6px}
+    .project-detail-body p{font-size:.88rem;line-height:1.55;color:#d2c9b8;margin:0 0 12px}
+    .project-detail-body strong{color:var(--ink)}
+    .project-detail-body a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+    .submit-film-name{margin:20px 0 0;padding:18px 20px;border:1px solid rgba(255,200,51,.55);background:rgba(255,200,51,.07)}
+    .submit-film-name strong{color:var(--bridge)}
+    .steps-cta{display:flex;justify-content:center;margin-top:28px}
+    .steps-cta .cta{background:var(--bridge);border-color:var(--bridge);font-size:1.05rem;padding:17px 28px}
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
     .step{padding:28px 28px 10px 0;border-right:1px solid var(--line)}
     .step:not(:first-child){padding-left:28px}
@@ -248,10 +259,9 @@
     .project{
       transition:transform .22s ease, border-color .22s ease;
     }
-    .project:hover{transform:translateY(-4px)}
-    .project .poster img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-    .project:hover .poster img{transform:scale(1.025)}
-    .project .pitch{min-height:4.1em}
+    .project:hover{transform:translateY(-2px)}
+    .project .poster img{transition:none}
+    .project .pitch{min-height:0}
     .project-more{
       display:inline-flex;align-items:center;justify-content:center;
       min-height:46px;padding:0 14px;
@@ -392,10 +402,8 @@
     "endDate":"2026-11-14",
     "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
     "location":{"@type":"Place","name":"EICAR Paris","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"}},
-    "organizer":[
-      {"@type":"Organization","name":"L’Afrique Fait Son Cinéma"},
-      {"@type":"Organization","name":"Bridge.audio","url":"https://www.bridge.audio/"}
-    ]
+    "organizer":{"@type":"Organization","name":"L’Afrique Fait Son Cinéma"},
+    "contributor":{"@type":"Organization","name":"Bridge.audio","url":"https://www.bridge.audio/"}
   }
   </script>
 
@@ -408,9 +416,23 @@
       {"@type":"Question","name":"Quels titres puis-je proposer ?","acceptedAnswer":{"@type":"Answer","text":"Des titres one-stop dont les droits nécessaires à la synchronisation peuvent être libérés à 100 %."}},
       {"@type":"Question","name":"Qui sélectionne les morceaux ?","acceptedAnswer":{"@type":"Answer","text":"Un jury professionnel réunissant des superviseurs musicaux, agents de synchronisation et éditeurs."}},
       {"@type":"Question","name":"Être finaliste garantit-il une synchronisation ?","acceptedAnswer":{"@type":"Answer","text":"Non. Une sélection ou un prix ne garantit pas un placement dans un film."}},
-      {"@type":"Question","name":"Comment proposer mes titres ?","acceptedAnswer":{"@type":"Answer","text":"Envoyez directement votre proposition via l’Inbox dédiée : inbox.bridge.audio/afsc."}},
+      {"@type":"Question","name":"Comment proposer mes titres ?","acceptedAnswer":{"@type":"Answer","text":"Envoyez votre proposition via l’Inbox dédiée : inbox.bridge.audio/afsc. Indiquez clairement le nom du film ou projet auquel chaque titre est destiné."}},
       {"@type":"Question","name":"Je n’utilise pas encore Bridge.audio. Puis-je participer ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Aucun compte Workspace n’est nécessaire pour participer."}}
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Film Music Awards 2026 — Appel à musiques",
+    "description":"Quatre projets cinématographiques recherchent leur musique dans le cadre des Film Music Awards 2026, présentés par L’Afrique Fait Son Cinéma avec Bridge.audio.",
+    "about":[
+      {"@type":"Thing","name":"Music synchronization"},
+      {"@type":"Thing","name":"Film music"},
+      {"@type":"Organization","name":"Bridge.audio","url":"https://www.bridge.audio/"}
+    ],
+    "inLanguage":"fr"
   }
   </script>
 </head>
@@ -453,7 +475,7 @@
             <a class="cta" data-track="hero_submit" href="https://inbox.bridge.audio/afsc">Envoyer ma musique ↗</a>
             <a class="cta dark" href="#projets">Voir les 4 projets</a>
           </div>
-          <div class="hero-meta"><span>4 projets</span><span>4 briefs</span><span>1 session live</span></div>
+          <div class="hero-meta"><span>4 projets</span><span>5 directions musicales</span><span>1 session live</span></div>
         </div>
         <aside class="festival-card">
           <img src="assets/afsc-logo.jpeg" alt="Logo L’Afrique Fait Son Cinéma">
@@ -471,36 +493,60 @@
           <div>
             <div class="eyebrow">01 — Les projets</div>
             <h2>Quatre projets cherchent leur musique.</h2>
-            <p class="lead">Quatre histoires. Quatre univers. Quatre recherches musicales.</p>
+            <p class="lead">Découvrez chaque projet, son synopsis et son brief musical complet directement sur cette page.</p>
           </div>
-          <a class="cta dark" href="https://inbox.bridge.audio/afsc">Voir les briefs ↗</a>
         </div>
         <div class="projects">
           <article class="project">
             <div class="poster"><img loading="lazy" decoding="async" src="assets/dallas-en-afrique.jpg" alt="Visuel du projet Dallas en Afrique"></div>
             <div class="project-num">01</div><h3>Dallas en Afrique</h3><p>Long-métrage fiction · Afrique du Sud / Togo</p>
             <p class="pitch">Un couple mixte confronte amour, pouvoir et argent entre traditions vaudou, secteur pétrolier et scandale médiatico-politique.</p>
-            <a class="project-more" data-track="project_01_more" href="https://inbox.bridge.audio/afsc">Voir le brief ↗</a>
+            <details class="project-details"><summary>Voir le brief complet</summary><div class="project-detail-body">
+              <p><strong>Format & statut :</strong> Long-métrage fiction · Scénario en cours (Afrique du Sud / Togo)</p>
+              <p><strong>Réalisation :</strong> Laureline Dupré</p>
+              <p><strong>Synopsis :</strong> Quand un couple mixte tente d'apporter de la modernité au Togo, il découvre que le pouvoir et l'argent ont un prix que l'amour ne suffit pas à payer. Une plongée sous tension entre traditions vaudou, secteur pétrolier et scandale médiatico-politique.</p>
+              <p><strong>Brief musical :</strong> Scène-clé de la découverte de Lomé par Chloé lors d'un trajet en voiture depuis l'aéroport. La musique doit traduire la chaleur, la poussière et le « joyeux chaos urbain » de la ville sans écraser le paysage sonore. On recherche une composition vivante, chaleureuse et progressive, qui commence de façon contemplative puis monte en intensité lorsque Chloé quitte la voiture pour se fondre dans la rue. Style : afro-fusion tradi-moderne d'inspiration togolaise (réf. Toofan), alliant rythmes traditionnels et énergie contemporaine.</p>
+              <p><strong>Format requis :</strong> Instrumental ou chanté · Droits 100 % libérés (One-Stop).</p>
+            </div></details>
           </article>
           <article class="project">
             <div class="poster"><img loading="lazy" decoding="async" src="assets/kaasma.jpg" alt="Visuel du projet Kaasma"></div>
             <div class="project-num">02</div><h3>Kaasma</h3><p>Long-métrage fiction · Cameroun / France</p>
             <p class="pitch">Une jeune médecin franco-camerounaise rejoint Maroua, où son destin bascule après une embuscade qui coûte la vie à son père.</p>
-            <a class="project-more" data-track="project_02_more" href="https://inbox.bridge.audio/afsc">Voir le brief ↗</a>
+            <details class="project-details"><summary>Voir le brief complet</summary><div class="project-detail-body">
+              <p><strong>Format & statut :</strong> Long-métrage fiction · Scénario finalisé (Cameroun / France)</p>
+              <p><strong>Production / Réalisation :</strong> François Chaillou (2PG Pictures)</p>
+              <p><strong>Synopsis :</strong> Jeune franco-camerounaise diplômée en médecine, Kaasma rejoint Maroua au Cameroun pour exercer aux côtés de son père. Pris dans une embuscade au retour d'un village meurtri par Boko Haram, son père est abattu sous ses yeux ; elle échappe miraculeusement à la mort.</p>
+              <p><strong>Brief musical :</strong> La musique est au cœur de l'intrigue et représente la passion secrète de Kaasma, qui se révèle au fil de l'histoire jusqu'au concert final du film où elle prend la parole pour la liberté des femmes. On recherche un titre d'inspiration sahélienne et d'Afrique de l'Ouest, fusionnant mélodies traditionnelles et pulsations reggae. Le morceau doit être porté par une voix féminine forte, engagée et émouvante, capable de galvaniser la scène finale de concert.</p>
+              <p><strong>Format requis :</strong> Titre chanté (voix féminine) · Droits 100 % libérés (One-Stop).</p>
+            </div></details>
           </article>
           <article class="project">
             <div class="poster"><img loading="lazy" decoding="async" src="assets/lapo-chape-fondas.png" alt="Visuel du documentaire Lapo Chapé Fondas"></div>
             <div class="project-num">03</div><h3>Lapo Chapé Fondas</h3><p>Long-métrage documentaire · Antilles / France</p>
             <p class="pitch">Un documentaire sur la mémoire, le métissage et les constructions identitaires héritées de la colonisation, entre Antilles et Hexagone.</p>
-            <a class="project-more" data-track="project_03_more" href="https://inbox.bridge.audio/afsc">Voir le brief ↗</a>
+            <details class="project-details"><summary>Voir le brief complet</summary><div class="project-detail-body">
+              <p><strong>Format & statut :</strong> Long-métrage documentaire · En production (Antilles / France)</p>
+              <p><strong>Réalisation :</strong> Mélissandre Monatus (Eklepsis)</p>
+              <p><strong>Synopsis :</strong> « Lapo Chapé » désigne en créole martiniquais la couleur de peau qui échappe à la condition servile, et « Fondas » ce qui va au cœur du sujet. Ce documentaire traverse les Antilles et l'Hexagone pour interroger la mémoire, le métissage et les constructions identitaires héritées de la colonisation.</p>
+              <p><strong>Brief musical :</strong> Le morceau est destiné aux moments charnières du film (générique de début ou de fin) et doit incarner la voix et l'âme du documentaire. L'intention est de mêler enracinement caribéen, mémoire et espoir, sans sur-dramatiser les récits intimes. On cherche une musique organique, sensible et universelle, enracinée dans le patrimoine martiniquais tout en restant moderne. Références : traditions du bèlè, esprit d'Eugène Mona, textures acoustiques et respirations contemporaines.</p>
+              <p><strong>Format requis :</strong> Instrumental ou chanté (paroles en créole martiniquais bienvenues) · Droits 100 % libérés (One-Stop).</p>
+            </div></details>
           </article>
           <article class="project">
             <div class="poster"><img loading="lazy" decoding="async" src="assets/itineraire-mode-caribeenne.jpeg" alt="Visuel du documentaire Itinéraire de la mode caribéenne : Madras"></div>
             <div class="project-num">04</div><h3>Itinéraire de la mode caribéenne</h3><p>Documentaire · Caraïbes / France</p>
             <p class="pitch">Une immersion dans la mode contemporaine avec Ayden et Glam Ethnik, entre élégance afro-caribéenne, madras réinventé et haute couture.</p>
-            <a class="project-more" data-track="project_04_more" href="https://inbox.bridge.audio/afsc">Voir le brief ↗</a>
+            <details class="project-details"><summary>Voir les 2 briefs complets</summary><div class="project-detail-body">
+              <p><strong>Format & statut :</strong> Documentaire décliné en 2 versions : format long <em>Itinéraire de la mode caribéenne</em> et format court <em>Madras, ambassadeur de la mode créole</em> · En développement (Caraïbes / France)</p>
+              <p><strong>Réalisation :</strong> Alix Veroneze (en collaboration avec Ayden - Glam Ethnik)</p>
+              <p><strong>Synopsis :</strong> Une immersion vibrante dans l'univers de la mode contemporaine aux côtés de la créatrice caribéenne Ayden (maison Glam Ethnik), célébrant l'élégance afro-caribéenne, la réinvention du madras et le rayonnement international de cette haute couture.</p>
+              <p><strong>Option A — Biguine Électro / Drum & Bass :</strong> Fusion novatrice entre l'héritage festif et chaloupé de la biguine traditionnelle (cuivres, percussions caribéennes) et l'énergie percutante de la drum & bass moderne (basses lourdes, synthés acérés, tempo soutenu). Une atmosphère solaire, chic et clubbing taillée pour le rythme d'un défilé. <a href="https://open.spotify.com/intl-fr/album/5UqUeBFv7vAfewUpzCBNPo?si=h4FBA99DTM2Ooh5vpnl-ew" target="_blank" rel="noopener">Réf. : Clat (Randoré & Jidor) ↗</a></p>
+              <p><strong>Option B — Dancehall / Afro-Caribéen Pop & Urbain :</strong> Rythmique urbaine contemporaine au groove percutant et sensuel (tempo modéré autour de 100 BPM), alliant sonorités caribéennes actuelles, basse lourde et mélodie accrocheuse. Voix féminine assurée ou duo dynamique, apportant une attitude affirmée, glamour et dansante, parfaite pour illustrer l'audace et la modernité des collections. <a href="https://open.spotify.com/intl-fr/track/1aHqDbfM4dSf5bUFfEt9IU?si=1bd376ebffaa4726" target="_blank" rel="noopener">Réf. : Run di place (Bamby feat. Jahyanai) ↗</a></p>
+              <p><strong>Format requis :</strong> Instrumental ou chanté · Droits 100 % libérés (One-Stop).</p>
+            </div></details>
           </article>
-        </div>
+        </div>        </div>
       </div>
     </section>
 
@@ -511,10 +557,12 @@
           <a class="cta" data-track="participation_submit" href="https://inbox.bridge.audio/afsc">Envoyer ma musique ↗</a>
         </div>
         <div class="steps timeline" style="grid-template-columns:repeat(3,1fr)">
-          <div class="step"><div class="n">01</div><h3>Découvrez les projets</h3><p>Lisez le pitch de chaque film sur cette page et ouvrez le projet Bridge.audio pour consulter le brief complet.</p></div>
+          <div class="step"><div class="n">01</div><h3>Découvrez les projets</h3><p>Lisez le synopsis et dépliez le brief musical complet de chaque projet directement sur cette page.</p></div>
           <div class="step"><div class="n">02</div><h3>Choisissez votre brief</h3><p>Sélectionnez le ou les projets auxquels votre musique peut répondre.</p></div>
-          <div class="step"><div class="n">03</div><h3>Envoyez votre proposition</h3><p>Déposez directement vos titres via l’Inbox dédiée. Aucun Workspace Bridge.audio à rejoindre.</p></div>
+          <div class="step"><div class="n">03</div><h3>Envoyez votre proposition</h3><p>Déposez vos titres via l’Inbox dédiée. <strong>Indiquez clairement le nom du film / projet auquel chaque titre est destiné.</strong> Aucun Workspace Bridge.audio à rejoindre.</p></div>
         </div>
+        <div class="submit-film-name"><strong>IMPORTANT — NOM DU PROJET OBLIGATOIRE</strong><br>Au moment de soumettre votre musique, indiquez clairement le nom du film / projet sur lequel vous pitchez : <strong>Dallas en Afrique</strong>, <strong>Kaasma</strong>, <strong>Lapo Chapé Fondas</strong> ou <strong>Itinéraire de la mode caribéenne</strong>.</div>
+        <div class="steps-cta"><a class="cta" data-track="steps_submit" href="https://inbox.bridge.audio/afsc">Envoyer ma musique ↗</a></div>
       </div>
     </section>
 
@@ -527,9 +575,8 @@
           <p class="lead">Les titres finalistes sont ensuite présentés lors d’une session live de 1 h 30 pendant L’Afrique Fait Son Cinéma, en présence des réalisateurs et des professionnels invités.</p>
         </div>
         <div class="selection-note">
-          <strong>Jury 2026</strong>
-          <p class="placeholder">Noms à confirmer.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cet espace accueillera les membres du jury, leurs fonctions et leurs structures.</p>
+          <strong>Jury professionnel</strong>
+          <p>Superviseurs musicaux, agents de synchronisation et éditeurs. Les noms seront publiés une fois confirmés.</p>
         </div>
       </div>
     </section>
@@ -555,7 +602,7 @@
           <div class="bridge-mark"><img class="bridge-logo bridge-logo-large" src="assets/bridge-logo-ivory.png" alt="Bridge.audio"></div>
           <h2>La musique circule mieux quand l’industrie est connectée.</h2>
           <p class="bridge-copy">Bridge.audio est une plateforme de workflow et de découverte musicale pour les créateurs, professionnels de la musique et équipes créatives.</p>
-          <p class="bridge-copy bridge-secondary">Pour les Film Music Awards, Bridge.audio accueille les projets et leurs briefs, tandis que les artistes envoient directement leurs propositions via une Inbox dédiée.</p>
+          <p class="bridge-copy bridge-secondary">Pour les Film Music Awards, les artistes envoient leurs propositions via une Inbox Bridge.audio dédiée.</p>
           <a class="cta" data-track="bridge_learn_more" href="https://www.bridge.audio/" style="background:var(--bridge);border-color:var(--bridge);color:#0A0A08;margin-top:18px">Découvrir Bridge.audio ↗</a>
         </div>
         <div class="bridge-quote">Un brief devient une recherche.<br>Une recherche devient une écoute.<br>Une écoute peut devenir une opportunité.</div>
@@ -605,7 +652,7 @@
           </div>
           <div>
             <details><summary>Être finaliste garantit-il une synchronisation ?</summary><p>Non. Les Film Music Awards créent des opportunités d’écoute, de rencontre et de synchronisation. Une sélection ou un prix ne garantit pas un placement dans un film.</p></details>
-            <details><summary>Comment proposer mes titres ?</summary><p>Envoyez directement votre proposition via l’Inbox dédiée : inbox.bridge.audio/afsc.</p></details>
+            <details><summary>Comment proposer mes titres ?</summary><p>Envoyez votre proposition via l’Inbox dédiée : inbox.bridge.audio/afsc. Indiquez clairement le nom du film ou projet auquel chaque titre est destiné.</p></details>
             <details><summary>Je n’utilise pas encore Bridge.audio. Puis-je participer ?</summary><p>Oui. Aucun compte Workspace n’est nécessaire pour participer : vous pouvez consulter les projets puis envoyer votre proposition via l’Inbox dédiée.</p></details>
           </div>
         </div>
@@ -614,7 +661,7 @@
 
     <section class="closing">
       <div class="wrap">
-        <div class="eyebrow">4 projets · 4 briefs</div>
+        <div class="eyebrow">4 projets · 5 directions musicales</div>
         <h2>Quel projet attend votre musique ?</h2>
         <p class="lead">Découvrez les projets. Choisissez vos briefs. Faites écouter votre musique.</p>
         <a class="cta" data-track="closing_submit" href="https://inbox.bridge.audio/afsc" style="margin-top:18px">Envoyer ma musique ↗</a>
