@@ -1,0 +1,1 @@
+Deploy the contents of this directory to radar-madrid/ in the GitHub Pages repository. Root index.html is Spanish. Other languages: /en/, /fr/, /it/, /pt/, /de/. Canonicals, hreflang and sharing links assume https://clementsouchier-stack.github.io/not-bridge/radar-madrid/. The public site is NOT updated by creating this archive.

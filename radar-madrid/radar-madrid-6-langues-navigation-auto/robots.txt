@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://clementsouchier-stack.github.io/not-bridge/radar-madrid/sitemap.xml
